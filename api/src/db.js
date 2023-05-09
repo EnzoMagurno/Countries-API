@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+// const Activity = require('./models/Activity');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
@@ -37,9 +38,9 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Country, Turism } = sequelize.models;
-Country.belongsToMany(Turism, { through: 'country_turism' });
-Turism.belongsToMany(Country, { through: 'country_turism' });
+const { Country, Activity } = sequelize.models;
+Country.belongsToMany(Activity, { through: 'country_activity' });
+Activity.belongsToMany(Country, { through: 'country_activity' });
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
