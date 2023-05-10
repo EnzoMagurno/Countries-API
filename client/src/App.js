@@ -1,9 +1,21 @@
 import './App.css';
+// import {Home,Form,Detail,Landing} from './Views'
+import Form from './Views/Form/Form'
+import NavBar from './Components/NavBar/NavBar'
+import {Route,Routes,useLocation} from 'react-router-dom'
 
 function App() {
+  const location = useLocation()
   return (
     <div className="App">
-      <h1>Henry Countries</h1>
+    <h1>Countries</h1>
+      {location.pathname !== '/' && <NavBar/> }
+      <Routes>
+        {/* <Route path='/' element={<Landing/>}/> */}
+        {/* <Route path='/home' element={<Home/>}/> */}
+        <Route path='/form' element={<Form/>}/>
+        {/* <Route path='/detail/:id' element={<Detail/>}/> */}
+      </Routes>
     </div>
   );
 }

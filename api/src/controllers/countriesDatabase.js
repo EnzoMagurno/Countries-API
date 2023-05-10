@@ -7,7 +7,6 @@ const countriesDatabase = async(req,res) =>{
     try {
         const response = (await axios.get(API)).data
         const data = response.map(country=>{
-            console.log(country.capital);
             return{
             id:country.cca3,
             name:country.name.common,
