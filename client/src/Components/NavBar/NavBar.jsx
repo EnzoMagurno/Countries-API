@@ -1,11 +1,12 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
+import style from './NavBar.module.css'
 const NavBar = () => {
     return (
-        <>
-            <h1>searchbar</h1>
-        </>
+        <div className={style.mainContainer}>
+            <Link to={'/home'}>Home</Link>
+            <Link to={'/form'}>Activities</Link>
+        </div>
     )
 }
-
 export default NavBar

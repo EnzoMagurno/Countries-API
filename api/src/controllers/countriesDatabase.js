@@ -15,7 +15,7 @@ const countriesDatabase = async(req,res) =>{
             continent:country.continents,
             subregion:country.subregion,
             area:country.area,
-            poblation:country.population,
+            population:country.population,
         }})
         const bdd = await Country.bulkCreate(data)
         res.status(200).send(bdd)
@@ -23,5 +23,4 @@ const countriesDatabase = async(req,res) =>{
         res.status(400).send(error)
     }
 }
-
 module.exports = countriesDatabase

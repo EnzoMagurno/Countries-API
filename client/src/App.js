@@ -2,12 +2,12 @@ import './App.css';
 import {Home,Form,Detail,Landing} from './Views'
 import NavBar from './Components/NavBar/NavBar'
 import {Route,Routes,useLocation} from 'react-router-dom'
+// import React,{ useEffect, useState } from 'react'
 
 function App() {
   const location = useLocation()
   return (
     <div className="App">
-    {/* <h1>Countries</h1> */}
       {location.pathname !== '/' && <NavBar/> }
       <Routes>
         <Route path='/' element={<Landing/>}/>
