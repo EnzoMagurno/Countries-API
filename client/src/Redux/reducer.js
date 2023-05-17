@@ -1,7 +1,8 @@
 import {GET_COUNTRIES,GET_COUNTRY,GET_COUNTRY_BY_NAME} from './actions'
 const initialState = {
     countries:[],
-    country:[]
+    country:[],
+    countryByName:[]
 }
 const rootReducer = (state = initialState,action) =>{
     switch(action.type){
@@ -12,7 +13,7 @@ const rootReducer = (state = initialState,action) =>{
             return {...state, country:action.payload}
         
         case GET_COUNTRY_BY_NAME:
-            return {...state, country:action.payload}
+            return {...state, countryByName:action.payload}
         default:
             return {...state}
     }

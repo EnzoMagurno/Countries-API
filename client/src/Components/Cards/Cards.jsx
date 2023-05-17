@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 
 const Cards = () => {
     const countries = useSelector(state => state.countries.data)
-    console.log('esto es ', countries)
     return (
         <div className={style.container}>
             {countries?.length > 0 ? (

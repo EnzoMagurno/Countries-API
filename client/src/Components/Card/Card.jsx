@@ -10,10 +10,6 @@ const Card = (props) => {
                     <img className='image' src={props.flag} alt='Flag' />
                 </Link>
                 <h2>Continent:</h2>{props.continent}
-                {/* <h2>Capital:</h2>{props.capital}
-                <h2>Subregion:</h2>{props.subregion}
-                <h2>Area:</h2>{props.area}
-                <h2>Population:</h2>{props.population} */}
             </div>
         </div>
     )
