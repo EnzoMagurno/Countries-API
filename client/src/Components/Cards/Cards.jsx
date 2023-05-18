@@ -5,8 +5,9 @@ import { useSelector } from 'react-redux'
 
 const Cards = () => {
     const countries = useSelector(state => state.countries.data)
+
     return (
-        <div className={style.container}>
+        <div className={style.cardsContainer}>
             {countries?.length > 0 ? (
                 countries.map(
                     country => (
@@ -22,7 +23,7 @@ const Cards = () => {
                             population={country.population}
                         />
                     )
-                )) : (<p className={style.loading}>Loading</p>)}
+                )) : <p></p>}
         </div>
     )
 }

@@ -5,35 +5,56 @@ import { getCountries } from '../../Redux/actions'
 import { useSelector } from 'react-redux'
 import Cards from '../../Components/Cards/Cards.jsx'
 import Card from '../../Components/Card/Card'
+import Filters from '../../Components/Filters/Filters'
+import SearchBar from '../../Components/SearchBar/SearchBar'
+
 const Home = () => {
-    const countries = useSelector(state => state.countryByName)
+
+    const countries = useSelector(state => state.countries.data)
+    const country = useSelector(state => state.country)
     const dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(getCountries())
     }, [dispatch])
+
+    useEffect(() => {
+    }, [countries])
+
     return (
         <>
             <h1>Vista Home</h1>
-            {countries && countries.length ? (
-                countries.map((country) => (
+            <SearchBar />
+            <Filters />
+            {country && country.length ? (
+                country.map((count) => (
                     <Card
-                        key={country.id}
-                        id={country.id}
-                        name={country.name}
-                        continent={country.continent}
-                        flag={country.flag}
+                        key={count.id}
+                        id={count.id}
+                        name={count.name}
+                        continent={count.continent}
+                        flag={count.flag}
                     />
-                )
-                )
+                ))
             ) : (
                 <>
-                    <p>No countries found.</p>
+                    {countries && countries.length ? (
+                        countries.map((country) => (
+                            <Card
+                                key={country.id}
+                                id={country.id}
+                                name={country.name}
+                                continent={country.continent}
+                                flag={country.flag}
+                            />
+                        ))
+                    ) : (
+                        <p>No countries found.</p>
+                    )}
                     <Cards countries={countries} />
                 </>
-            )
-            }
+            )}
         </>
     )
 }
-
 export default Home

@@ -1,11 +1,22 @@
-import {GET_COUNTRIES,GET_COUNTRY,GET_COUNTRY_BY_NAME} from './actions'
+import {
+    GET_COUNTRIES,
+    GET_COUNTRY,
+    GET_COUNTRY_BY_NAME,
+    FILTER_BY_CONTINENT,
+    ORDER_BY_NAME,
+    ORDER_BY_POPULATION,
+}
+    from './actions'
+
 const initialState = {
     countries:[],
     country:[],
-    countryByName:[]
 }
+
 const rootReducer = (state = initialState,action) =>{
+
     switch(action.type){
+
         case GET_COUNTRIES:
             return {...state, countries:action.payload}
         
@@ -13,7 +24,38 @@ const rootReducer = (state = initialState,action) =>{
             return {...state, country:action.payload}
         
         case GET_COUNTRY_BY_NAME:
-            return {...state, countryByName:action.payload}
+            return {...state, country:action.payload}
+
+        case FILTER_BY_CONTINENT:
+            const allCountries = state.countries
+            const filteredContinent = action.payload = 'ALL' ? allCountries : allCountries.filter(element=>element.continent === action.payload)
+            return {...state,countries:filteredContinent}
+
+
+            case ORDER_BY_NAME:
+                const sortedCountries = [...state.countries.data]
+                sortedCountries.sort((a,b)=>{
+                    if(action.payload === 'asc') {
+                        return a.name.localeCompare(b.name)
+                    }
+                    else{
+                        return b.name.localeCompare(a.name)
+                    }
+                })
+                return {...state,countries:{...state.countries,data:sortedCountries}}
+
+            case ORDER_BY_POPULATION: 
+            const sortedByPopulation = [...state.countries.data]
+            sortedByPopulation.sort((a,b)=>{
+                if(action.payload === 'Higher'){
+                    return b.population - a.population
+                }
+                else{
+                    return a.population - b.population
+                }
+            })
+            return {...state,countries:{...state.countries,data:sortedByPopulation}}
+
         default:
             return {...state}
     }

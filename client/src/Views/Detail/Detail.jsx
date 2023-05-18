@@ -12,7 +12,7 @@ const Detail = () => {
         dispatch(getCountry(id))
     }, [dispatch, id])
     if (!country) {
-        return <div>Loading...</div> // or any other loading state
+        return <div>Loading...</div>
     }
     return (
         <>

@@ -1,11 +1,11 @@
-.container {
+.cardsContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
 @media screen and (max-width: 768px) {
-    .container {
+    .cardsContainer {
         justify-content: center;
     }
 }
