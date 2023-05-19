@@ -14,7 +14,7 @@ const SearchBar = () => {
     }
 
     useEffect(() => {
-        console.log(name);
+        // console.log(name);
         if (name) dispatch(getCountryByName(name))
     }, [dispatch, name])
 

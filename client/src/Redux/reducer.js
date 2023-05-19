@@ -9,55 +9,54 @@ import {
     from './actions'
 
 const initialState = {
-    countries:[],
-    country:[],
+    countries: [],
+    country: [],
 }
 
-const rootReducer = (state = initialState,action) =>{
+const rootReducer = (state = initialState, action) => {
 
-    switch(action.type){
+    switch (action.type) {
 
         case GET_COUNTRIES:
-            return {...state, countries:action.payload}
-        
+            return { ...state, countries: action.payload }
+
         case GET_COUNTRY:
-            return {...state, country:action.payload}
-        
+            return { ...state, country: action.payload }
+
         case GET_COUNTRY_BY_NAME:
-            return {...state, country:action.payload}
+            return { ...state, country: action.payload }
 
         case FILTER_BY_CONTINENT:
-            const allCountries = state.countries
-            const filteredContinent = action.payload = 'ALL' ? allCountries : allCountries.filter(element=>element.continent === action.payload)
-            return {...state,countries:filteredContinent}
+            const allCountries = [...state.countries.data];
+            const filteredContinent = action.payload === 'All' ? allCountries : allCountries.filter(element => element.continent.includes(action.payload));
+            return { ...state, countries: { ...state.countries, data: filteredContinent } }
 
+        case ORDER_BY_NAME:
+            const sortedCountries = [...state.countries.data]
+            sortedCountries.sort((a, b) => {
+                if (action.payload === 'asc') {
+                    return a.name.localeCompare(b.name)
+                }
+                else {
+                    return b.name.localeCompare(a.name)
+                }
+            })
+            return { ...state, countries: { ...state.countries, data: sortedCountries } }
 
-            case ORDER_BY_NAME:
-                const sortedCountries = [...state.countries.data]
-                sortedCountries.sort((a,b)=>{
-                    if(action.payload === 'asc') {
-                        return a.name.localeCompare(b.name)
-                    }
-                    else{
-                        return b.name.localeCompare(a.name)
-                    }
-                })
-                return {...state,countries:{...state.countries,data:sortedCountries}}
-
-            case ORDER_BY_POPULATION: 
+        case ORDER_BY_POPULATION:
             const sortedByPopulation = [...state.countries.data]
-            sortedByPopulation.sort((a,b)=>{
-                if(action.payload === 'Higher'){
+            sortedByPopulation.sort((a, b) => {
+                if (action.payload === 'Higher') {
                     return b.population - a.population
                 }
-                else{
+                else {
                     return a.population - b.population
                 }
             })
-            return {...state,countries:{...state.countries,data:sortedByPopulation}}
+            return { ...state, countries: { ...state.countries, data: sortedByPopulation } }
 
         default:
-            return {...state}
+            return { ...state }
     }
 }
 export default rootReducer

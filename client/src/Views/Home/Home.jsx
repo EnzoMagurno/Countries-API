@@ -7,7 +7,6 @@ import Cards from '../../Components/Cards/Cards.jsx'
 import Card from '../../Components/Card/Card'
 import Filters from '../../Components/Filters/Filters'
 import SearchBar from '../../Components/SearchBar/SearchBar'
-
 const Home = () => {
 
     const countries = useSelector(state => state.countries.data)
@@ -19,6 +18,7 @@ const Home = () => {
     }, [dispatch])
 
     useEffect(() => {
+        // console.log('countries desde Home', countries);
     }, [countries])
 
     return (

@@ -6,7 +6,7 @@ const Filters = () => {
     const dispatch = useDispatch();
 
     const handlerFilterByContinent = (event) => {
-        const continent = event.target.value;
+        const continent = event.target.value
         dispatch(filterByContinent(continent))
     }
 
