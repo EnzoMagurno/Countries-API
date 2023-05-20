@@ -9,8 +9,14 @@ import Filters from '../../Components/Filters/Filters'
 import SearchBar from '../../Components/SearchBar/SearchBar'
 const Home = () => {
 
-    const countries = useSelector(state => state.countries.data)
+    const countries = useSelector(state => state.countries)
     const country = useSelector(state => state.country)
+    // const allCountries = useSelector(state => state.allCountries.data)
+    // console.log('esto es allCountries', allCountries);
+    // console.log('countries.data', countries);
+    console.log('countries desde Home', countries);
+    console.log('country desde Home', country);
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -18,7 +24,6 @@ const Home = () => {
     }, [dispatch])
 
     useEffect(() => {
-        // console.log('countries desde Home', countries);
     }, [countries])
 
     return (
@@ -26,7 +31,7 @@ const Home = () => {
             <h1>Vista Home</h1>
             <SearchBar />
             <Filters />
-            {country && country.length ? (
+            {Array.isArray(country) && country.length ? (
                 country.map((count) => (
                     <Card
                         key={count.id}
@@ -38,7 +43,7 @@ const Home = () => {
                 ))
             ) : (
                 <>
-                    {countries && countries.length ? (
+                    {Array.isArray(countries) && countries.length ? (
                         countries.map((country) => (
                             <Card
                                 key={country.id}

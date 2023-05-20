@@ -10,7 +10,7 @@ export const ORDER_BY_POPULATION = 'ORDER_BY_POPULATION'
 
 export const getCountries = () => {
     return async function (dispatch) {
-        const countries = await axios.get(`http://localhost:3001/countries`)
+        const countries = (await axios.get(`http://localhost:3001/countries`)).data
         return dispatch({ type: GET_COUNTRIES, payload: countries })
     }
 }
