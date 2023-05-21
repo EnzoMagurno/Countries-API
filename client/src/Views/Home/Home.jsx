@@ -11,9 +11,6 @@ const Home = () => {
 
     const countries = useSelector(state => state.countries)
     const country = useSelector(state => state.country)
-    // const allCountries = useSelector(state => state.allCountries.data)
-    // console.log('esto es allCountries', allCountries);
-    // console.log('countries.data', countries);
     console.log('countries desde Home', countries);
     console.log('country desde Home', country);
 

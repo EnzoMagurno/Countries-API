@@ -6,7 +6,18 @@ export const GET_COUNTRY_BY_NAME = 'GET_COUNTRY_BY_NAME'
 export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT'
 export const ORDER_BY_NAME = 'ORDER_BY_NAME'
 export const ORDER_BY_POPULATION = 'ORDER_BY_POPULATION'
+export const NEXT_PAGE = 'NEXT_PAGE'
+export const PREV_PAGE = 'PREV_PAGE'
+export const GET_ACTIVITIES = 'GET_ACTIVITIES'
+export const POST_ACTIVITY = 'POST_ACTIVITY'
 
+export const nextPage = () => {
+    return { type: NEXT_PAGE }
+}
+
+export const prevPage = () => {
+    return { type: PREV_PAGE }
+}
 
 export const getCountries = () => {
     return async function (dispatch) {
@@ -30,6 +41,20 @@ export const getCountryByName = (name) => {
         } catch (error) {
             console.log(error.message);
         }
+    }
+}
+
+export const getActivities = () => {
+    return async function (dispatch) {
+        const response = await axios.get('http://localhost:3001/activities/all')
+        return dispatch({ type: GET_ACTIVITIES, payload: response })
+    }
+}
+
+export const postActivity = (payload) => {
+    return async function (dispatch) {
+        const response = await axios.post('http://localhost:3001/activities/all', payload)
+        return dispatch({ type: POST_ACTIVITY, payload: response })
     }
 }
 

@@ -9,7 +9,7 @@ const countriesDatabase = async (req, res) => {
         const data = response.map(country => {
             let capital = country.capital;
             if (typeof capital === 'string') {
-                capital = [capital]; // Convertir a un array de un solo elemento
+                capital = [capital];
             }
             return {
                 id: country.cca3,
@@ -22,18 +22,6 @@ const countriesDatabase = async (req, res) => {
                 population: country.population,
             }
         });
-        // const data = response.map(country => {
-        //     return {
-        //         id: country.cca3,
-        //         name: country.name.common,
-        //         flag: country.flags.png,
-        //         capital: country.capital,
-        //         continent: country.region,
-        //         subregion: country.subregion,
-        //         area: country.area,
-        //         population: country.population,
-        //     }
-        // })
         const bdd = await Country.bulkCreate(data)
         res.status(200).send(bdd)
     } catch (error) {
