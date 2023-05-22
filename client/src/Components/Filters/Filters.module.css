@@ -1,0 +1,15 @@
+/* Estilos para el contenedor principal */
+.container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para los selectores */
+.select {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}

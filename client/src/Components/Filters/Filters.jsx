@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { filterByContinent, orderByPopulation, orderByName } from "../../Redux/actions";
-
+import styles from './Filters.module.css'
 const Filters = () => {
 
     const dispatch = useDispatch();
@@ -21,14 +21,14 @@ const Filters = () => {
     }
 
     return (
-        <div>
-            <select onChange={handlerOrderByName}>
+        <div className={styles.container}>
+            <select className={styles.select} onChange={handlerOrderByName}>
                 <option>Filter</option>
                 <option value="asc">A - Z</option>
                 <option value="desc">Z - A</option>
             </select>
 
-            <select onChange={handlerFilterByContinent}>
+            <select className={styles.select} onChange={handlerFilterByContinent}>
                 <option value="All">All</option>
                 <option value="Americas">America</option>
                 <option value="Europe">Europa</option>
@@ -37,7 +37,7 @@ const Filters = () => {
                 <option value="Oceania">Oceania</option>
             </select>
 
-            <select onChange={handlerByPopulation}>
+            <select className={styles.select} onChange={handlerByPopulation}>
                 <option>Por poblacion</option>
                 <option value="Higher">Mayor poblacion</option>
                 <option value="Lower">Menor poblacion</option>
