@@ -37,22 +37,7 @@ const Home = () => {
                     />
                 ))
             ) : (
-                <>
-                    {/* {Array.isArray(countries) && countries.length ? (
-                        countries.map((country) => (
-                            <Card
-                                key={country.id}
-                                id={country.id}
-                                name={country.name}
-                                continent={country.continent}
-                                flag={country.flag}
-                            />
-                        ))
-                    ) : (
-                        <p>No countries found.</p>
-                    )} */}
-                    <Cards countries={countries} />
-                </>
+                <Cards countries={countries} />
             )}
         </>
     )
