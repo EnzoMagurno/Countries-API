@@ -1,0 +1,28 @@
+.paginate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+}
+
+.image {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.image:hover {
+    opacity: 0.8;
+}
+
+.page-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 1rem;
+}

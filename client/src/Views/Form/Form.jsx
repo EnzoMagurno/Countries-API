@@ -132,7 +132,11 @@ const Form = () => {
             {errors.countries && <p className={styles.errors}>{errors.countries}</p>}
             {errors.countries && <p className={styles.errors}>{errors.countries}</p>}
             <ul>
-                <li>{form.countries.map((country) => country + " ,")}</li>
+                <li>{form.countries.map((country) => {
+                    console.log(country)
+
+                    return country + " ,"
+                })}</li>
             </ul>
             <button
                 className={styles.button}

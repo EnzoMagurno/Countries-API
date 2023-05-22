@@ -23,7 +23,7 @@ const Home = () => {
 
     return (
         <>
-            <h1>Vista Home</h1>
+            <h1>COUNTRIES</h1>
             <SearchBar />
             <Filters />
             {Array.isArray(country) && country.length ? (
@@ -38,7 +38,7 @@ const Home = () => {
                 ))
             ) : (
                 <>
-                    {Array.isArray(countries) && countries.length ? (
+                    {/* {Array.isArray(countries) && countries.length ? (
                         countries.map((country) => (
                             <Card
                                 key={country.id}
@@ -50,7 +50,7 @@ const Home = () => {
                         ))
                     ) : (
                         <p>No countries found.</p>
-                    )}
+                    )} */}
                     <Cards countries={countries} />
                 </>
             )}
