@@ -46,14 +46,18 @@ export const getCountryByName = (name) => {
 
 export const getActivities = () => {
     return async function (dispatch) {
-        const response = await axios.get('http://localhost:3001/activities/all')
-        return dispatch({ type: GET_ACTIVITIES, payload: response })
+        try {
+            const response = (await axios.get('http://localhost:3001/countries/activities/all')).data
+            return dispatch({ type: GET_ACTIVITIES, payload: response })
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 }
 
 export const postActivity = (payload) => {
     return async function (dispatch) {
-        const response = await axios.post('http://localhost:3001/activities/all', payload)
+        const response = await axios.post('http://localhost:3001/countries', payload)
         return dispatch({ type: POST_ACTIVITY, payload: response })
     }
 }
