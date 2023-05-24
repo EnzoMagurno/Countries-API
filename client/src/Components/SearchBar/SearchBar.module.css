@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+input {
+    padding: 0.5rem;
+    width: 20%;
+    /* font-weight: bold; */
+    font-size: 1rem;
+    outline: 1px solid rgb(255, 255, 255);
+}
+
+input:focus {
+    outline: 1px solid rgb(125, 114, 114);
+}

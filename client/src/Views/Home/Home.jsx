@@ -23,7 +23,6 @@ const Home = () => {
 
     return (
         <>
-            <h1>COUNTRIES</h1>
             <SearchBar />
             <Filters />
             {Array.isArray(country) && country.length ? (

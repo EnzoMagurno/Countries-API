@@ -1,0 +1,20 @@
+.mainContainer {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link {
+    padding-left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(116, 116, 124);
+
+}
+
+.link:hover {
+    color: rgb(30, 30, 46);
+
+}

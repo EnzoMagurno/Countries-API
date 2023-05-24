@@ -1,13 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
+import Earth from '../../Components/Earth/Earth'
 const Landing = () => {
     return (
-        <>
-            <h1>Vista Landing</h1>
-            <Link to={'/home'}>Home</Link>
-        </>
+        <div >
+            <Earth />
+        </div>
     )
 }
-
 export default Landing
