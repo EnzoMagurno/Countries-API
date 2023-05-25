@@ -18,6 +18,7 @@ const Home = () => {
     useEffect(() => {
         dispatch(getCountries())
     }, [dispatch])
+
     return (
         <>
             <SearchBar />
@@ -42,7 +43,7 @@ const Home = () => {
                     )}
                 </>
             ) : (
-                <p>No se encontraron resultados.</p>
+                <p style={{ color: 'black' }}>No se encontraron resultados.</p>
             )}
         </>
     )

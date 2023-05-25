@@ -4,8 +4,7 @@ import left from './assets/left.svg'
 import right from './assets/right.svg'
 
 const Paginate = ({ pages, next, prev }) => {
-    const numPage = useSelector(state => state.numPage)
-
+    let numPage = useSelector(state => state.numPage)
     return (
         <div className={styles.paginate}>
 

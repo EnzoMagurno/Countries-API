@@ -13,6 +13,7 @@ const Filters = () => {
 
     const handlerFilterByContinent = (event) => {
         const continent = event.target.value
+
         dispatch(filterByContinent(continent))
     }
     const handlerOrderByName = (event) => {
