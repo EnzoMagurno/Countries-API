@@ -1,4 +1,4 @@
-.container .card {
+/* .container .card {
     margin-bottom: 30px;
     box-shadow: 0px 0px 15px rgba(195, 16, 16, 0.1);
     border-radius: 10px;
@@ -23,18 +23,43 @@
 }
 
 .card img {
-    /* max-width: 70%;
-    max-height: 70%; */
     max-width: 20rem;
     max-height: 20rem;
     object-fit: cover;
 }
 
 .card a {
-    text-decoration: none;
+    text-decoration: dotted;
     color: #333;
 }
 
 .card a:hover {
     text-decoration: underline;
+} */
+
+.anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.anchor:hover {
+    text-decoration: none;
+    color: rgb(30, 30, 46);
+    text-decoration: underline;
+
+}
+
+.card {
+    padding: 1rem;
+}
+
+.card img {
+    max-width: 320px;
+    max-height: 160px;
+    min-height: 160px;
+    min-width: 320px;
+}
+
+.card h2 {
+    max-width: 320px;
 }

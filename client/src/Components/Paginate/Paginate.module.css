@@ -21,8 +21,18 @@
     opacity: 0.8;
 }
 
-.page-number {
+.paragraph {
+    padding: 0.2rem;
+    border-radius: 2000px;
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0 1rem;
+    color: rgb(116, 116, 124);
+
+}
+
+.paragraph:hover {
+    cursor: pointer;
+    color: rgb(30, 30, 46);
+
 }

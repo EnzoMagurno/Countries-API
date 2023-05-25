@@ -1,7 +1,6 @@
 const validation = (form) => {
     const errors = {}
 
-    //* validation name
 
     if (!form.name) {
         errors.name = "Empty activity name"
@@ -13,7 +12,7 @@ const validation = (form) => {
         errors.name = "";
     }
 
-    //* validation difficulty
+
 
     if (!form.difficulty) {
         errors.difficulty = "Empty difficulty level";
@@ -25,7 +24,7 @@ const validation = (form) => {
         errors.difficulty = "";
     }
 
-    //* validation duration 
+
 
     if (!/^([0-9]|1[0-9]|2[0-3])+hs$/.test(form.duration)) {
         errors.duration = "Invalid duration, Example: 2hs";
@@ -34,7 +33,7 @@ const validation = (form) => {
         errors.duration = "";
     }
 
-    //* validation season 
+
 
     if (!form.season) {
         errors.season = "Empty field, please select minimum one";

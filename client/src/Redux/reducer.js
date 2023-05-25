@@ -3,12 +3,13 @@ import {
     GET_COUNTRY,
     GET_COUNTRY_BY_NAME,
     FILTER_BY_CONTINENT,
+    ORDER_BY_ACTIVITIES,
     ORDER_BY_NAME,
     ORDER_BY_POPULATION,
     GET_ACTIVITIES,
     POST_ACTIVITY,
     NEXT_PAGE,
-    PREV_PAGE
+    PREV_PAGE,
 }
     from './actions'
 
@@ -17,15 +18,26 @@ const initialState = {
     country: [],
     allCountries: [],
     activities: [],
-    numPage: 1
+    numPage: 1,
 }
+
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+
         case GET_COUNTRIES:
-            return { ...state, countries: action.payload, allCountries: action.payload };
+            const countriesWithActivities = action.payload.map((country) => {
+                const countryWithActivities = { ...country };
+                const countryActivities = state.activities.filter((activity) =>
+                    country.activities?.some((act) => act === activity.id)
+                );
+                countryWithActivities.activities = countryActivities;
+                return countryWithActivities;
+            });
+            return { ...state, countries: countriesWithActivities, allCountries: action.payload };
+
 
         case GET_COUNTRY:
-            return { ...state, country: action.payload };
+            return { ...state, country: action.payload, countries: { ...state.countries, ...action.payload } };
 
         case GET_COUNTRY_BY_NAME:
             const country = action.payload;
@@ -34,6 +46,7 @@ const rootReducer = (state = initialState, action) => {
 
         case GET_ACTIVITIES:
             return { ...state, activities: action.payload }
+
         case POST_ACTIVITY:
             return { ...state }
 
@@ -44,7 +57,7 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, numPage: state.numPage - 1 }
 
         case FILTER_BY_CONTINENT:
-            const allCountries = Array.isArray(state.allCountries) ? state.allCountries : [];
+            const allCountries = state.allCountries ? state.allCountries : [];
             const filteredCountries = action.payload === 'All' ? allCountries : allCountries.filter(element => element.continent.includes(action.payload));
             return { ...state, countries: filteredCountries };
 
@@ -70,6 +83,17 @@ const rootReducer = (state = initialState, action) => {
             });
             return { ...state, countries: sortedCountriesByPopulation };
 
+        case ORDER_BY_ACTIVITIES:
+            const activityName = action.payload;
+            const updated = state.allCountries.filter((country) =>
+                country.activities?.some((activity) => activity.name === activityName)
+            );
+            console.log(updated);
+            return {
+                ...state,
+                countries: updated,
+                numPage: 1,
+            };
         default:
             return { ...state };
     }

@@ -71,7 +71,7 @@ const Form = () => {
             return alert("Incomplete fields, please complete all fields");
         }
         dispatch(postActivity(form));
-        alert("Actividad turistica creada exitosamente");
+        alert("Tourist activity successfully created");
         setForm({
             name: "",
             difficulty: "",
@@ -133,7 +133,6 @@ const Form = () => {
             {errors.countries && <p className={styles.errors}>{errors.countries}</p>}
             <ul>
                 <li>{form.countries.map((country) => {
-                    console.log(country)
 
                     return country + " ,"
                 })}</li>

@@ -10,26 +10,29 @@ export const NEXT_PAGE = 'NEXT_PAGE'
 export const PREV_PAGE = 'PREV_PAGE'
 export const GET_ACTIVITIES = 'GET_ACTIVITIES'
 export const POST_ACTIVITY = 'POST_ACTIVITY'
+export const ORDER_BY_ACTIVITIES = 'ORDER_BY_ACTIVITIES'
 
-export const nextPage = () => {
-    return { type: NEXT_PAGE }
-}
-
-export const prevPage = () => {
-    return { type: PREV_PAGE }
-}
 
 export const getCountries = () => {
     return async function (dispatch) {
-        const countries = (await axios.get(`http://localhost:3001/countries`)).data
-        return dispatch({ type: GET_COUNTRIES, payload: countries })
+        try {
+            const countries = (await axios.get(`http://localhost:3001/countries`)).data
+            return dispatch({ type: GET_COUNTRIES, payload: countries })
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 }
 
+
 export const getCountry = (id) => {
     return async function (dispatch) {
-        const country = await axios.get(`http://localhost:3001/countries/${id}`)
-        return dispatch({ type: GET_COUNTRY, payload: country })
+        try {
+            const country = await axios.get(`http://localhost:3001/countries/${id}`)
+            return dispatch({ type: GET_COUNTRY, payload: country })
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 }
 
@@ -57,8 +60,12 @@ export const getActivities = () => {
 
 export const postActivity = (payload) => {
     return async function (dispatch) {
-        const response = await axios.post('http://localhost:3001/countries', payload)
-        return dispatch({ type: POST_ACTIVITY, payload: response })
+        try {
+            const response = await axios.post('http://localhost:3001/countries', payload)
+            return dispatch({ type: POST_ACTIVITY, payload: response })
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 }
 
@@ -72,4 +79,16 @@ export const orderByName = (payload) => {
 
 export const orderByPopulation = (payload) => {
     return { type: ORDER_BY_POPULATION, payload }
+}
+
+export const orderByActivities = (payload) => {
+    return { type: ORDER_BY_ACTIVITIES, payload }
+}
+
+export const nextPage = () => {
+    return { type: NEXT_PAGE }
+}
+
+export const prevPage = () => {
+    return { type: PREV_PAGE }
 }

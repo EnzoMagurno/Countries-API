@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
@@ -9,7 +10,6 @@ import Filters from '../../Components/Filters/Filters'
 import SearchBar from '../../Components/SearchBar/SearchBar'
 
 const Home = () => {
-
     const countries = useSelector(state => state.countries)
     const country = useSelector(state => state.country)
     const dispatch = useDispatch()
@@ -17,26 +17,32 @@ const Home = () => {
     useEffect(() => {
         dispatch(getCountries())
     }, [dispatch])
-
-    useEffect(() => {
-    }, [countries])
-
     return (
         <>
             <SearchBar />
             <Filters />
-            {Array.isArray(country) && country.length ? (
-                country.map((count) => (
-                    <Card
-                        key={count.id}
-                        id={count.id}
-                        name={count.name}
-                        continent={count.continent}
-                        flag={count.flag}
-                    />
-                ))
+
+            {country.length > 0 || countries.length > 0 ? (
+                <>
+                    {country.length > 0 ? (
+                        <div>
+                            {country.map((count) => (
+                                <Card
+                                    key={count.id}
+                                    id={count.id}
+                                    name={count.name}
+                                    continent={count.continent}
+                                    flag={count.flag}
+                                    activities={count.activities}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <Cards countries={countries} />
+                    )}
+                </>
             ) : (
-                <Cards countries={countries} />
+                <p>No se encontraron resultados.</p>
             )}
         </>
     )

@@ -12,17 +12,22 @@ const Paginate = ({ pages, next, prev }) => {
             {numPage > 1 ? (
                 <div className={styles.arrow}>
                     <img src={left} alt="left arrow" onClick={prev} className={styles.image} />
-                    <p className={styles.pageNumber}>{numPage - 1}</p>
+                    <p className={styles.paragraph} onClick={prev}>{numPage - 1}</p>
+
                 </div>
-            ) : null}
-            <h2 className={styles.pageNumber}>{numPage}</h2>
-            {numPage < pages ? (
-                <div className={styles.arrow}>
-                    <p className={styles.pageNumber}>{numPage + 1}</p>
-                    <img src={right} alt="right arrow" onClick={next} className={styles.image} />
-                </div>
+
             ) : null}
 
+            <h2>{numPage}</h2>
+
+            {numPage < pages ? (
+
+                <div className={styles.arrow}>
+                    <p className={styles.paragraph} onClick={next}>{numPage + 1}</p>
+                    <img src={right} alt="right arrow" onClick={next} className={styles.image} />
+                </div>
+
+            ) : null}
 
         </div >
     )

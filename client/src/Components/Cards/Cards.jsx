@@ -5,20 +5,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { nextPage, prevPage } from '../../Redux/actions'
 import Paginate from '../Paginate/Paginate'
 
-const Cards = () => {
-
-    const countries = useSelector(state => state.countries)
+const Cards = ({ countries }) => {
     const numPage = useSelector(state => state.numPage)
     const dispatch = useDispatch()
 
-    let desde = (numPage - 1) * 10
-    let hasta = numPage * 10
+    let from = (numPage - 1) * 10
+    let until = numPage * 10
     let pages = Math.ceil(countries?.length / 10)
-    let views = countries?.slice(desde, hasta)
-
+    let views = countries?.slice(from, until)
+    console.log('desde Home, countries', countries);
     const next = () => dispatch(nextPage())
     const prev = () => dispatch(prevPage())
-
     return (
         <div>
             <Paginate pages={pages} next={next} prev={prev} />
@@ -34,6 +31,7 @@ const Cards = () => {
                         subregion={country.subregion}
                         area={country.area}
                         population={country.population}
+                        activities={country.activities}
                     />
                 ))}
             </div>
