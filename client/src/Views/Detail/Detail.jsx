@@ -29,10 +29,10 @@ const Detail = () => {
             </div>
             {activities.length ? activities.map(activity => (
                 <div className={style.activityContainer} key={activity.id}>
-                    <p>Activity: {activity.name}</p>
-                    <p>Difficulty: {activity.difficulty}</p>
-                    <p>Season: {activity.season}</p>
-                    <p>Duration: {activity.duration}</p>
+                    <p className={style.p}>Activity: {activity.name}</p>
+                    <p className={style.p}>Difficulty: {activity.difficulty}</p>
+                    <p className={style.p}>Season: {activity.season}</p>
+                    <p className={style.p}>Duration: {activity.duration}</p>
                 </div>
             )) : <p>{country?.country.name} has no activities
             </p>}

@@ -86,44 +86,44 @@ const Form = () => {
     }, [dispatch]);
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <h1>Create your tourist activity</h1>
-            <div className={styles.inputsContainer}>
+            <div >
                 <div>
                     <label>Name</label>
                 </div>
-                <input className={styles.inputs} type="text" onChange={handleChange} value={form.name} name="name" placeholder="Activity name" />
-                {errors.name && <p className={styles.errors}>{errors.name}</p>}
+                <input type="text" onChange={handleChange} value={form.name} name="name" placeholder="Activity name" />
+                {errors.name && <p >{errors.name}</p>}
             </div>
-            <div className={styles.inputsContainer}>
+            <div >
                 <div>
                     <label>Difficulty</label>
                 </div>
-                <input className={styles.inputs} type="text" onChange={handleChange} value={form.difficulty} name="difficulty" placeholder="From 1 to 5" />
-                {errors.difficulty && <p className={styles.errors}>{errors.difficulty}</p>}
+                <input type="text" onChange={handleChange} value={form.difficulty} name="difficulty" placeholder="From 1 to 5" />
+                {errors.difficulty && <p>{errors.difficulty}</p>}
             </div>
-            <div className={styles.inputsContainer}>
+            <div >
                 <div>
                     <label>Duration</label>
                 </div>
                 <input className={styles.inputs} type="text" onChange={handleChange} value={form.duration} name="duration" placeholder="Enter the duration in hours (1hs)" />
                 {errors.duration && <p className={styles.errors}>{errors.duration}</p>}
             </div>
-            <div className={styles.checkDiv}>
-                <select className={styles.selectCountry} onChange={handleSeasons}>
-                    <option className={styles.seasons}>Select season</option>
-                    <option value="summer">Summer</option>
-                    <option value="autumn">Autumn</option>
-                    <option value="winter">Winter</option>
-                    <option value="spring">Spring</option>
+            <div className={styles.seasons}>
+                <select onChange={handleSeasons}>
+                    <option className={styles.season}>Select season</option>
+                    <option className={styles.season} value="summer">Summer</option>
+                    <option className={styles.season} value="autumn">Autumn</option>
+                    <option className={styles.season} value="winter">Winter</option>
+                    <option className={styles.season} value="spring">Spring</option>
                 </select>
                 {errors.season && <p className={styles.errors}>{errors.season}</p>}
             </div>
-            <select className={styles.selectCountry} value={selected} onChange={(event) => [handleCountries(event), setSelected(event)]}>
+            <select className={styles.countries} value={selected} onChange={(event) => [handleCountries(event), setSelected(event)]}>
                 <option>Select Country</option>
                 {countriesList?.map((country) => {
                     return (
-                        <option key={country.id} value={country.id}>
+                        <option className={styles.countries} key={country.id} value={country.id}>
                             {country.name}
                         </option>
                     );
@@ -132,10 +132,9 @@ const Form = () => {
             {errors.countries && <p className={styles.errors}>{errors.countries}</p>}
             {errors.countries && <p className={styles.errors}>{errors.countries}</p>}
             <ul>
-                <li>{form.countries.map((country) => {
-
+                {form.countries.map((country) => {
                     return country + " ,"
-                })}</li>
+                })}
             </ul>
             <button
                 className={styles.button}

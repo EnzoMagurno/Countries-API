@@ -13,7 +13,6 @@ const Cards = ({ countries }) => {
     let until = numPage * 10
     let pages = Math.ceil(countries?.length / 10)
     let views = countries?.slice(from, until)
-    console.log('desde Home, countries', countries);
     const next = () => dispatch(nextPage())
     const prev = () => dispatch(prevPage())
     return (

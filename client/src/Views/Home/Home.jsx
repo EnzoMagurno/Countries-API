@@ -8,6 +8,7 @@ import Cards from '../../Components/Cards/Cards.jsx'
 import Card from '../../Components/Card/Card'
 import Filters from '../../Components/Filters/Filters'
 import SearchBar from '../../Components/SearchBar/SearchBar'
+import styles from './Home.module.css'
 
 const Home = () => {
     const countries = useSelector(state => state.countries)
@@ -21,11 +22,10 @@ const Home = () => {
         <>
             <SearchBar />
             <Filters />
-
             {country.length > 0 || countries.length > 0 ? (
                 <>
                     {country.length > 0 ? (
-                        <div>
+                        <div className={styles.cardCountry}>
                             {country.map((count) => (
                                 <Card
                                     key={count.id}
