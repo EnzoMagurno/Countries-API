@@ -11,7 +11,7 @@ export const PREV_PAGE = 'PREV_PAGE'
 export const GET_ACTIVITIES = 'GET_ACTIVITIES'
 export const POST_ACTIVITY = 'POST_ACTIVITY'
 export const ORDER_BY_ACTIVITIES = 'ORDER_BY_ACTIVITIES'
-
+export const RESET_PAGE = 'RESET_PAGE'
 
 export const getCountries = () => {
     return async function (dispatch) {
@@ -91,4 +91,8 @@ export const nextPage = () => {
 
 export const prevPage = () => {
     return { type: PREV_PAGE }
+}
+
+export const resetPage = () => {
+    return { type: RESET_PAGE }
 }

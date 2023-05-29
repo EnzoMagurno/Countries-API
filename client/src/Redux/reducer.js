@@ -10,6 +10,7 @@ import {
     POST_ACTIVITY,
     NEXT_PAGE,
     PREV_PAGE,
+    RESET_PAGE,
 }
     from './actions'
 
@@ -56,6 +57,8 @@ const rootReducer = (state = initialState, action) => {
         case PREV_PAGE:
             return { ...state, numPage: state.numPage - 1 }
 
+        case RESET_PAGE:
+            return { ...state, numPage: 1 }
         case FILTER_BY_CONTINENT:
             const allCountries = state.allCountries ? state.allCountries : [];
             const filteredCountries = action.payload === 'All' ? allCountries : allCountries.filter(element => element.continent.includes(action.payload));
@@ -88,7 +91,6 @@ const rootReducer = (state = initialState, action) => {
             const updated = state.allCountries.filter((country) =>
                 country.activities?.some((activity) => activity.name === activityName)
             );
-            console.log(updated);
             return {
                 ...state,
                 countries: updated,

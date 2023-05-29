@@ -3,6 +3,7 @@ import { filterByContinent, orderByPopulation, orderByName, orderByActivities, g
 import styles from './Filters.module.css'
 import { useEffect } from "react";
 
+
 const Filters = () => {
 
     const dispatch = useDispatch();
